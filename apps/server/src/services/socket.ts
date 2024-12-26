@@ -1,17 +1,24 @@
 import {Server} from 'socket.io';
 import Redis from 'ioredis';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const redisPort = Number(process.env.REDIS_PORT);
+if (isNaN(redisPort)) {
+    throw new Error(`Invalid REDIS_PORT: ${process.env.REDIS_PORT}`);
+}
 
 const pub = new Redis({
-    host:'',
-    port: 232,
-    username:'',
-    password:''
+    host: String(process.env.REDIS_HOST) ,
+    port: Number(redisPort),
+    username: String(process.env.REDIS_USERNAME),
+    password: String(process.env.REDIS_PASSWORD)
 });
 const sub = new Redis({
-    host:'',
-    port: 232,
-    username:'',
-    password:''
+    host: String(process.env.REDIS_HOST) ,
+    port: Number(redisPort),
+    username: String(process.env.REDIS_USERNAME),
+    password: String(process.env.REDIS_PASSWORD)
 });
 
 class SocketService {
@@ -25,6 +32,7 @@ class SocketService {
             },
         });
         sub.subscribe('MESSAGES');
+        console.log("PORT : ", process.env.REDIS_PORT);
     }
     public initListeners(){
         const io = this._io;
