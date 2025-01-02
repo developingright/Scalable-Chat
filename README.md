@@ -1,84 +1,54 @@
-# Turborepo starter
+# WebSocket Chat App Boilerplate with Redis Pub/Sub
 
-This is an official starter Turborepo.
+This is a simple WebSocket-based chat application boilerplate that incorporates Redis pub/sub to make the system scalable across multiple instances. This project demonstrates a basic chat functionality using WebSockets, along with a Redis pub/sub system to ensure messages are broadcast to all connected clients, even when multiple instances are deployed.
 
-## Using this example
+# Redis Pub/Sub for Scalability
+This project uses Redis' publish/subscribe (pub/sub) system to scale the chat application. Redis ensures that any message sent from one client is broadcast to all active clients, even when multiple instances of the application are running, providing a scalable real-time chat experience.
 
-Run the following command:
+# Running the Turborepo with npm
+Follow these steps to set up and run the Turborepo project using npm:
+
+Clone the Repository \
+First, clone the repository to your local machine:
 
 ```sh
-npx create-turbo@latest
+git clone https://github.com/developingright/Scalable-Chat.git
+cd Scalable-Chat
+```
+Install Dependencies \
+Install the required dependencies using npm:
+```sh
+npm install
 ```
 
-## What's inside?
+Build the Project \
+To build all apps and packages in the monorepo, run:
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+npm run build
 ```
 
-### Develop
+Start Development Server \
+To start the development server for all apps and packages, run:
 
-To develop all apps and packages, run the following command:
-
+```sh
+npm run dev
 ```
-cd my-turborepo
-pnpm dev
-```
+This will start the development servers for all the apps included in the monorepo.
 
-### Remote Caching
+Access the Apps
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+Access the web app at http://localhost:3000
+Access the docs app at http://localhost:3001
+Access the server app at http://localhost:8080
+Running Remote Caching (Optional)
+If you want to enable remote caching for faster builds across machines, run the following commands after setting up a Vercel account:
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
+```sh
 npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
 npx turbo link
 ```
+This will authenticate and link the project to your Vercel account for remote caching.
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Enjoy the Project!
+You can now start developing and working with the Turborepo setup. All your apps and packages are ready for development!
